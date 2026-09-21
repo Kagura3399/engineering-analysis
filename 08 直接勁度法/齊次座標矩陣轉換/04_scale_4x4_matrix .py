@@ -1,0 +1,61 @@
+import numpy as np
+import matplotlib.pyplot as plt
+import math
+# 顯示視窗的大小定義
+plt.figure(figsize=(9,9))
+
+# 畫坐標軸
+ax=plt.gca() #get current axes取得目前的軸物件
+ax.spines['left'].set_position('zero')#設定左邊邊框到x=0
+ax.spines['bottom'].set_position('zero')#設定左邊邊框到y=0
+ax.spines['right'].set_color('none')#隱藏右邊框
+ax.spines['top'].set_color('none')#隱藏上邊框
+
+# 畫輔助格線
+plt.grid(True,linestyle='--',alpha=0.8)
+
+# 重新定義座標的範圍 lim->limit
+plt.xlim(-5,5)
+plt.ylim(-6,6)
+
+# 加上x,y座標的文字
+plt.text(5.2,-0.1,'x',fontsize=14)
+plt.text(-0.2,6.2,'y',fontsize=14)
+
+
+# 畫小刻度 tick
+plt.xticks(range(-5,5,1))
+plt.yticks(range(-6,6,1))
+
+
+# 因為等一下要讓點座標旋轉,所以要用np.array來儲存點座標,方便與旋轉矩陣一同操作
+rect_points= np.array([
+    [-2.5,-2],
+    [2.5,-2],
+    [2.5,2],
+    [-2.5,2],
+    [-2.5,-2]
+])
+
+plt.plot(rect_points[:,0],rect_points[:,1],'k-',linewidth=2)
+
+
+# 逆時針旋轉矩陣,留意sin負號位置,這個矩陣是圖旋轉,座標固定,"4x4階齊次轉換矩陣"
+scale_matrix=np.array([
+    [0.5, 0, 0, 0],
+    [0, 0.5, 0, 0],
+    [0,   0, 1, 0],
+    [0,   0, 0, 1]
+])
+
+homo_rect_points=np.ones((len(rect_points),4))
+print(homo_rect_points)
+homo_rect_points[:,0:2]=rect_points
+print(homo_rect_points)
+homo_rect_points[:,2]=0 #Z座標設為0 因為是平面
+print(homo_rect_points)
+
+homo_scale_points= np.dot(homo_rect_points,scale_matrix.T)
+plt.plot(homo_scale_points[:,0],homo_scale_points[:,1],'b-',linewidth=2)
+# 顯示視窗
+plt.show()

@@ -1,0 +1,10 @@
+     節點              值      單位
+1mm 8556	9.586e+07	N/m^2 no fillet mesh 1mm
+5mm 5977	4.939e+07	N/m^2 no fillet mesh 5mm
+10mm 120	3.584e+07	N/m^2 no fillet mesh 10mm
+此處為應立集中的位置，應力值會隨著元素越細而越大，值無法收斂，所以此處的應力值不可以拿來參考
+
+帶圓角的結果
+10343	8.657e+07	N/m^2  fillet mesh 5mm
+2346	7.843e+07	N/m^2  fillet mesh 10mm
+

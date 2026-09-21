@@ -1,0 +1,45 @@
+#大括號
+def curly_braces_examples():
+    #1.字典dictionary(key:value) key:不可重複 value:可以是任何型別的資料
+    person={"Name":"小明","Age":"20","city":"台中"}
+    print(f"dict的範例:{person},型別:{type(person)}")
+
+    empty_dict={}
+    print(f"dict的空集合:{empty_dict},型別:{type(empty_dict)}")
+    #修改dict內容
+    person["Age"]=18
+    print(f"dict的範例:{person},型別:{type(person)}")
+    
+    # 讀dict內容
+    read_dict=person["Name"]
+    print(f"dict的範例:{read_dict},型別{type(read_dict)}")
+
+    #2. Set 集合
+    #容器內的元素不重複
+    #元素沒有排序 不可以這樣寫哦 set[0]
+    #最大好處支援 交集 聯集 差集
+
+    ##空集合
+    empty_set=set()#空集合要呼叫set()
+    print(f"set的空集合:{empty_set},型別:{type(empty_set)}")
+
+    ##重複數字測試
+    unique_numbers={1,1,2,2,4,4,4,5,6}
+    print(f"重複數字的範例:{unique_numbers},型別:{type(unique_numbers)}")
+
+    #聯集
+    set_A={1,2,3,4}
+    set_B={2,3,4,5}
+
+    uniqon_set=set_A|set_B
+    print(f"聯集:{uniqon_set},型別:{type(uniqon_set)}")
+
+    intersection_set=set_A & set_B
+    print(f"交集:{intersection_set},型別{type(intersection_set)}")
+
+    difference_set_AB=set_A & set_B
+    print(f"差集:{difference_set_AB},型別:{type(difference_set_AB)}")
+    difference_set_BA=set_B-set_A
+    print(f"差集:{difference_set_BA},型別:{type(difference_set_BA)}")
+
+curly_braces_examples()
